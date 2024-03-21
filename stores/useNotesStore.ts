@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import { v4 } from "uuid";
 
 export interface Note {
-  id: number;
+  id: string;
   createdAt: string,
   updatedAt: string,
   content: string;
@@ -11,8 +11,8 @@ export interface Note {
 export interface NotesState {
   notes: Note[];
   addNote: (note: Note) => void;
-  updateNote: (id: number, updatedFields: Partial<Note>) => void;
-  deleteNote: (id: number) => void;
+  updateNote: (id: string, updatedFields: Partial<Note>) => void;
+  deleteNote: (id: string) => void;
   setNotes: (notes: Note[]) => void;
   fetchNotes: () => Promise<void>;
 }

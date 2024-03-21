@@ -13,7 +13,7 @@ export default function Home() {
   const [search, setSearch] = useState<string>('');
 
   const [showAddNoteField, setShowAddNoteField] = useState<boolean>(false);
-  const [currentlyEditingNoteId, setCurrentlyEditingNoteId] = useState<null | number>(null);
+  const [currentlyEditingNoteId, setCurrentlyEditingNoteId] = useState<null | string>(null);
   const [noteText, setNoteText] = useState<string>('');
   const [hasNoteTextLengthError, setHasNoteTextLengthError] = useState<boolean>(false);
 
@@ -31,7 +31,7 @@ export default function Home() {
     }
   }, [noteText]);
 
-  const editNote = (id: number, content: string): void => {
+  const editNote = (id: string, content: string): void => {
     setShowAddNoteField(false);
     setCurrentlyEditingNoteId(id);
     setNoteText(content);
@@ -43,7 +43,7 @@ export default function Home() {
     setNoteText('');
   }
 
-  const saveEditedNote = (id: number): void => {
+  const saveEditedNote = (id: string): void => {
     setShowAddNoteField(false);
     updateNote(id, { updatedAt: (new Date()).toUTCString(), content: noteText });
     setCurrentlyEditingNoteId(null);
